@@ -1,0 +1,40 @@
+<head>
+    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<h1>{{.Title}}</h1>
+
+<table id="newstable" class="display">
+    <col width="35%">
+    <col width="65%">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Keywords</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $key, $value := .News }}
+         <tr>
+            <td><a href="{{ $value.Location }}" target='_blank'>{{ $key }}</td>
+            <td>{{ $value.Keyword }}</td>
+        </tr>
+        {{ end }}
+    </tbody>
+</table>
+
+<script>$(document).ready(function() {
+    $('#newstable').DataTable();
+} );</script>  
+
+<!-- 
+ {{ range $key, $value := .News }}      //iterating over news for range key 
+         ...do some stuff
+        {{ end }}
+
+
+-->
